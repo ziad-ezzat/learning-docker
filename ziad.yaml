@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mydep
+
+spec:
+  selector:
+    matchLabels:
+      label-name: label
+      app: ziad
+  replicas: 2
+  template:
+    metadata:
+      name: mypod
+      labels:
+        label-name: label
+        app: ziad
+    spec:
+      containers:
+        - image: ziadezzat/nginx-nab
+          name: nginx-container
+          ports:
+            - containerPort: 80
